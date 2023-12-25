@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import  { createContext, useContext, useEffect, useState } from 'react'
 import "../Firebase"
@@ -28,21 +29,22 @@ export  function AuthProvider({children}){
         const unsubcribe = onAuthStateChanged(auth, async (user) => {
            try {
              if (user) {
-              
                if(user.displayName){
+                setloading(false);
                 const res  =  await Axios.post(`${import.meta.env.VITE_API_URL_V1}/user`, {
                     uid: user.uid ,
                     displayName: user.displayName || '' ,
                     email:  user.email,
                     photoURL : user.photoURL || ''
                   });
-                  setcurrentUser(res.data);
+                  setcurrentUser(user);
                }
                else{
+                setloading(false);
                 setcurrentUser() 
                 Logout();
                } 
-               setloading(false);
+               
              } else {
                setcurrentUser();
                await Axios.delete(`${import.meta.env.VITE_API_URL_V1}/logout`);

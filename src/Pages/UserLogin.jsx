@@ -45,7 +45,7 @@ export default function UserLogin() {
         toast.success("Log in  Successfully")
         setTimeout(() => {
          naving("/");
-        }, 200);
+        }, 300);
       } catch (error) {
         setErrorMsg(error?.message);
         setcurrentloading(false);
