@@ -5,6 +5,7 @@
 "Nahid Eshomz" is a blog management website that empowers users to write, edit, comment, view, and like blog posts. It provides a seamless and user-friendly experience for content creation and engagement.
 
 ## Live Website Preview
+
 [![Project Screenshot](https://github.com/Nahid4306053/nahid-eshomazv2-client/blob/main/public/full_web_preview.jpg)](https://eshomaz.netlify.app/)
 
 [Click to View Live Website](https://eshomaz.netlify.app/)
