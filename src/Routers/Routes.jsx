@@ -13,18 +13,20 @@ import BlogFullPreview from "../Pages/BlogFullPreview";
 import MyBlogs from "../Pages/DashBoard/MyBlogs";
 import UpdateBlog from "../Pages/DashBoard/UpdateBlog";
 import FilterBlog from "../Pages/FilterBlog";
+import Notfound from "../Pages/Notfound";
 const Routers = createBrowserRouter([
    {
     path: "/",
     element : <AuthProvider><MainLayout></MainLayout></AuthProvider>,
+    errorElement : <Notfound></Notfound>,
     children : [
       {
         path: "/",
-        element : <Privaterouter><Blogs></Blogs></Privaterouter>            
+        element : <Blogs></Blogs>            
       }
       , {
         path: "/filter",
-        element : <Privaterouter><FilterBlog></FilterBlog></Privaterouter>            
+        element : <FilterBlog></FilterBlog>            
       }
       ,  {
         path: "/post/:id",
@@ -53,10 +55,12 @@ const Routers = createBrowserRouter([
     ]
    },{
         path: "/login",
+        errorElement : <Notfound></Notfound>,
         element : <AuthProvider><><UserLogin></UserLogin></> </AuthProvider>           
       }
       ,{
         path: "/signup",
+        errorElement : <Notfound></Notfound>,
         element : <AuthProvider><><UserSignUp></UserSignUp>  </>         </AuthProvider> 
       }
 ])

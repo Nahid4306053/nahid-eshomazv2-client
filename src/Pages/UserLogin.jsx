@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +15,8 @@ export default function UserLogin() {
   const naving = useNavigate();
   // eslint-disable-next-line no-unused-vars
   const [currentloading, setcurrentloading] = useState(false);
-  const { Login } = useAuth();
+  const { Login , currentUser} = useAuth();
+ 
   const getPassword = (e) => {
     // const validpassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     const value = e.target.value;
@@ -78,14 +80,14 @@ export default function UserLogin() {
           <InputField
             onChange={getEmail}
             required
-            type="email"
+            type="text"
             placeholder="Email"
             iconName="fa-solid fa-envelope"
           />
           <InputField
             onChange={getPassword}
             required
-            type="password"
+            type="text"
             placeholder="Password"
             iconName="fa-solid fa-lock"
           />

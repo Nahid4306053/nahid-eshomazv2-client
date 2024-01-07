@@ -4,8 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../Context/Authinicetion";
 import user from "../assets/user.png";
 export default function Account() {
-  // const [openUserPopup, setUserPopup] = useState(false);
-  
+
   const { currentUser, Logout } = useAuth();
   return (
     <li>
@@ -38,20 +37,20 @@ export default function Account() {
                   <i className="fa-sharp fa-solid fa-address-card"></i>
                   Dashboard
                 </NavLink>
-                <NavLink className="flex items-center gap-3 text-lg" to="/bookmarks">
+                <a className="flex items-center gap-3 text-lg" >
                   <i className="fa-regular fa-book-bookmark"></i> Bookmarks
-                </NavLink>
-                <NavLink className="flex items-center gap-3 text-lg" to="/help&support">
+                </a>
+                <a className="flex items-center gap-3 text-lg" >
                   <i className="fa-solid fa-messages-question"></i> Help &
                   Support
-                </NavLink>
-                <p
+                </a>
+                <NavLink
                   className="text-lg text-[#002347] font-bold"
                   onClick={Logout}
                 >
                   <i className="fa-solid fa-right-from-bracket mr-3"></i> Log
                   out
-                </p>
+                </NavLink>
               </div>
             </div>
           </ul>

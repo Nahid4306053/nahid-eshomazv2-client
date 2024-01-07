@@ -22,23 +22,23 @@ export default function DashBoardSidebar() {
           <i className="fa-solid fa-signs-post"></i>
           <p className="lg:block hidden">Add New Blog</p>
         </NavLink>
-        <NavLink to="/" className="item">
+        <a className="item">
           <i className="fa-solid fa-heart"></i>
           <p className="lg:block hidden">My Folowers</p>
-        </NavLink>
+        </a>
 
         <NavLink to="/" className="item">
           <i className="fa-duotone fa-browser"></i>
           <p className="lg:block hidden">All Blogs</p>
         </NavLink>
-        <NavLink to="/" className="item">
+        <a className="item">
           <i className="fa-solid fa-messages-question"></i>
           <p className="lg:block hidden">Contact & Support</p>
-        </NavLink>
-        <NavLink to="/" className="item">
+        </a>
+        <a  className="item">
           <i className="fa-solid fa-gear"></i>
           <p className="lg:block hidden">Settings</p>
-        </NavLink>
+        </a>
       </div>
       <div className="header  h-20 w-full   flex justify-center items-center  bg-[#001d3b] shadow-lg border-t-2"></div>
     </div>

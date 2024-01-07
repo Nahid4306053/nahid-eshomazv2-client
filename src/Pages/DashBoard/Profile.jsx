@@ -107,7 +107,7 @@ export default function Profile() {
         </div>
         <div className="col-span-7 pt-10 space-y-4">
           <InputBox readOnly={readmood} defaultValue={forminfo.displayName} required type="text" placeholder="Display Name" label="Display Name" name="displayName" ></InputBox>
-          <InputBox value={forminfo.email} readOnly={true} type="email" placeholder="Email" label="Email (Not Editable)" ></InputBox>
+          <InputBox value={forminfo.email} readOnly={true} type="text" placeholder="Email" label="Email (Not Editable)" ></InputBox>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-lg">About Yourself Short</span>

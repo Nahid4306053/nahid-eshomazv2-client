@@ -124,14 +124,14 @@ export default function UserSignUp() {
             <InputField
               onChange={getPassword}
               required
-              type="password"
+              type="text"
               placeholder="Password"
               iconName="fa-solid fa-lock"
             />
             <InputField
               onChange={getConfirmPassword}
               required
-              type="password"
+              type="text"
               placeholder="Confirm Password"
               iconName="fa-solid fa-lock-hashtag"
             />

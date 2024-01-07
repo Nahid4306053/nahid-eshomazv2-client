@@ -4,9 +4,11 @@ import moment from "moment";
 import user from "../assets/user.png";
 import GoogleIcons from "../components/GoogleIcons";
 import "../scss/BlogCard.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../Context/Authinicetion";
 
 export default function BlogFullPreviewCard({ element }) {
+  const {currentUser} = useAuth()
 
   return (
     <div className="grid grid-cols-12 mt-10">
@@ -16,7 +18,7 @@ export default function BlogFullPreviewCard({ element }) {
             {element.title}
           </a>
         </h3>
-        <div className="mt-3  py-2 cata_gorey">
+        <div className="mt-3 flex justify-between gap-5  py-2 cata_gorey">
           <ul>
             <li className="text-start">
               <p>
@@ -35,6 +37,11 @@ export default function BlogFullPreviewCard({ element }) {
               </p>
             </li>
           </ul>
+          
+          {currentUser  && currentUser.uid ===  element?.author.uid &&
+           <div className="icon">
+            <NavLink to={`/dashboard/update-blog/${element._id}`}><i className="fa-solid text-blue-950 text-xl p-1 rounded-lg px-2 bg-base-300 fa-pen-to-square"></i></NavLink>
+          </div>}
         </div>
         <img src={element.banner} className=" w-full " alt="" />
       </div>

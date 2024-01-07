@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import  { createContext, useContext, useEffect, useState } from 'react'
-import "../Firebase"
+
 import {getAuth ,createUserWithEmailAndPassword,updateProfile ,signInWithEmailAndPassword ,signOut ,onAuthStateChanged } from 'firebase/auth'
 const AuthContext = createContext();
 import Authloader from '../assets/AuthLoading.json'
 import useAxios from '../Hooks/DataFeachting/useAxios';
 import toast from 'react-hot-toast';
 import Lottie from 'lottie-react';
+import app from '../Firebase';
 // eslint-disable-next-line react-refresh/only-export-components
 export function useAuth(){
      return useContext(AuthContext);
@@ -18,11 +19,11 @@ export  function AuthProvider({children}){
     const Axios = useAxios()
     const [loading , setloading] = useState(true);
     const [currentUser , setcurrentUser] = useState();
-    const auth = getAuth();
+    const auth = getAuth(app);
 
     async  function Logout(){
     await Axios.delete(`${import.meta.env.VITE_API_URL_V1}/logout`);     
-    const auth = getAuth();
+
     return signOut(auth);
 }
     useEffect(() => {
@@ -38,19 +39,15 @@ export  function AuthProvider({children}){
                     photoURL : user.photoURL || ''
                   });
                   setcurrentUser(user);
-               }
-               else{
-                setloading(false);
-                setcurrentUser() 
-                Logout();
+                  setloading(false);
                } 
-               
              } else {
                setcurrentUser();
                await Axios.delete(`${import.meta.env.VITE_API_URL_V1}/logout`);
                setloading(false);
              }
            } catch (err) {
+
              toast.error("There is server side problem occured. so try again")
              setcurrentUser() 
              Logout();
@@ -63,7 +60,7 @@ export  function AuthProvider({children}){
 
 
      async function signup(username , email,password,){
-      const auth = getAuth();
+
       await createUserWithEmailAndPassword(auth , email , password);
       await updateProfile(auth.currentUser,{
            displayName : username,
@@ -77,7 +74,7 @@ export  function AuthProvider({children}){
 }
 
 function Login(email , password){
-    const auth = getAuth(); 
+
     return  signInWithEmailAndPassword(auth , email , password);
 
 }
@@ -111,14 +108,7 @@ const UpdateProfile = async  (username,photoURL)=>{
 }
 
 
-     const value = {
-        currentUser,
-        signup,
-        Login,
-        Logout,
-        loading ,
-        UpdateProfile 
-     }
+     const value = { currentUser, signup, Login, Logout, loading , UpdateProfile }
   
      return (
          <AuthContext.Provider value={value}>
